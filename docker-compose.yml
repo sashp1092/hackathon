@@ -1,0 +1,70 @@
+services:
+  # MySQL база данных
+  mysql:
+    image: mysql:8.0
+    container_name: hackaton_mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+    ports:
+      - "20193:3306"    # Изменено, чтобы не конфликтовать с PHP
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - ./mysql/init.sql:/docker-entrypoint-initdb.d/init.sql
+    networks:
+      - hackaton_net
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u$${MYSQL_USER}", "-p$${MYSQL_PASSWORD}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # PHP + Apache сервер (Основной сайт)
+  php:
+    image: php:8.2-apache
+    container_name: hackaton_php
+    restart: always
+    ports:
+      - "20191:80"      # Ваш основной порт для доступа к сайту
+    volumes:
+      - ./public:/var/www/html/public
+      - ./api:/var/www/html/api
+      - ./админка:/var/www/html/админка
+      - ./src:/var/www/html/src
+    environment:
+      - MYSQL_HOST=mysql
+      - MYSQL_DATABASE=${MYSQL_DATABASE}
+      - MYSQL_USER=${MYSQL_USER}
+      - MYSQL_PASSWORD=${MYSQL_PASSWORD}
+    depends_on:
+      mysql:
+        condition: service_healthy
+    networks:
+      - hackaton_net
+
+  # phpMyAdmin (веб-интерфейс для БД)
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin:latest
+    container_name: hackaton_phpmyadmin
+    restart: always
+    ports:
+      - "20192:80"      # Доступ к базе через браузер
+    environment:
+      - PMA_HOST=mysql
+      - PMA_PORT=3306
+      - UPLOAD_LIMIT=128M
+    depends_on:
+      mysql:
+        condition: service_healthy
+    networks:
+      - hackaton_net
+
+networks:
+  hackaton_net:
+    driver: bridge
+
+volumes:
+  mysql_data:

@@ -1,0 +1,246 @@
+/* Общие стили и переменные */
+:root {
+  --samodelniy-shrift: Verdana, sans-serif;
+  --primary-color: #2563eb;
+  --text-main: #111827;
+  --text-muted: #6b7280;
+  --bg-light: #f9fafb;
+  --white: #ffffff;
+  --border: #e5e7eb;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--samodelniy-shrift);
+  background-color: var(--white);
+  color: var(--text-main);
+  line-height: 1.6;
+}
+
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Шапка */
+header {
+  padding: 20px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-family: monospace;
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+.nav-links {
+  display: flex;
+  list-style: none;
+  gap: 20px;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: var(--text-main);
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+/* Hero секция */
+.hero {
+  text-align: center;
+  padding: 80px 0;
+}
+
+.hero h1 {
+  font-size: 3rem;
+  letter-spacing: -1px;
+  line-height: 1.1;
+  margin-bottom: 20px;
+}
+
+.subtitle {
+  color: var(--text-muted);
+  font-size: 1rem;
+  margin-bottom: 30px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.btn-primary {
+  background: var(--primary-color);
+  color: white;
+  padding: 12px 24px;
+  text-decoration: none;
+  border-radius: 5px;
+  font-weight: 600;
+  display: inline-block;
+  transition: 0.3s;
+}
+
+.btn-primary:hover {
+  background: #1d4ed8;
+}
+
+/* Сетка контента */
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 40px;
+  padding: 40px 0;
+  border-top: 1px solid var(--border);
+}
+
+.info-block h3 {
+  font-size: 1rem;
+  margin-bottom: 15px;
+  border-left: 3px solid var(--primary-color);
+  padding-left: 10px;
+}
+
+.badge {
+  font-size: 0.7rem;
+  background: #eee;
+  padding: 2px 6px;
+  border-radius: 4px;
+  margin-left: 10px;
+}
+
+.timeline,
+.contact-list {
+  list-style: none;
+}
+
+.timeline li,
+.contact-list li {
+  font-size: 0.9rem;
+  margin-bottom: 8px;
+}
+
+.timeline span {
+  font-weight: bold;
+  color: var(--primary-color);
+  margin-right: 10px;
+}
+
+/* Нижняя часть */
+.bottom-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 40px;
+  padding: 60px 0;
+}
+
+/* Таблица */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 30px;
+}
+
+th {
+  text-align: left;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--border);
+}
+
+td {
+  padding: 12px 0;
+  font-size: 0.9rem;
+  border-bottom: 1px solid #f3f4f6;
+}
+
+/* Бонусы */
+.bonuses h4 {
+  font-size: 0.8rem;
+  margin-bottom: 15px;
+  color: var(--text-muted);
+}
+
+.bonus-icons {
+  display: flex;
+  gap: 20px;
+}
+
+.bonus-item {
+  text-align: center;
+  font-size: 1.2rem;
+}
+
+.bonus-item span {
+  display: block;
+  font-size: 0.7rem;
+  margin-top: 5px;
+}
+
+/* Карточка регистрации */
+.registration-card {
+  background: var(--bg-light);
+  padding: 30px;
+  border-radius: 10px;
+  height: fit-content;
+}
+
+.registration-card h3 {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.registration-card input {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 10px;
+  border: 1px solid var(--border);
+  border-radius: 5px;
+}
+
+.btn-submit {
+  width: 100%;
+  padding: 12px;
+  background: var(--primary-color);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+footer {
+  text-align: center;
+  padding: 40px 0;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  border-top: 1px solid var(--border);
+}
+
+/* Адаптивность для мобилок */
+@media (max-width: 768px) {
+  .bottom-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hero h1 {
+    font-size: 2rem;
+  }
+
+  .nav-links {
+    display: none;
+    /* Скрываем меню для простоты или можно сделать бургер */
+  }
+}
