@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Межвузовский Хакатон КОД+ 2026</title>
+    <link rel="stylesheet" href="css/Style.css">
+    <script src="js/script.js"></script>
+</head>
+
+<body>
+
+    <header>
+        <nav class="container">
+            <div class="logo">_КОД+ 2026</div>
+            <button class="menu-toggle" id="mobile-menu" aria-label="Открыть меню">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-links" id="nav-links">
+                <li><a href="#about">О нас</a></li>
+                <li><a href="#schedule">Расписание</a></li>
+                <li><a href="#register">Регистрация</a></li>
+                <li><a href="#participants">Участники</a></li>
+                <li><a href="#contacts">Контакты</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero container">
+        <h1>МЕЖВУЗОВСКИЙ<br>ХАКАТОН КОД+ 2026</h1>
+        <p class="subtitle">РАЗРАБОТКА ЦИФРОВОЙ ПЛАТФОРМЫ | DevOps | WEB | IT</p>
+        <a href="#register" class="btn-primary">ЗАРЕГИСТРИРОВАТЬСЯ</a>
+    </section>
+
+    <section class="info-grid container">
+        <div id="about" class="info-block">
+            <h3>О МЕРОПРИЯТИИ</h3>
+            <p>Организационный комитет Межвузовского хакатона «КОД+ 2026» готовит цифровую платформу для регистрации
+                участников будущего соревнования. Вам предстоит за 3 часа разработать и развернуть рабочий стенд
+                системы.</p>
+        </div>
+
+        <div id="schedule" class="info-block">
+            <h3>РАСПИСАНИЕ <span class="badge">3 HOURS</span></h3>
+            <ul class="timeline">
+                <li><span>11:00 AM</span> Открытие</li>
+                <li><span>11:30 AM</span> Мозговой штурм</li>
+                <li><span>12:00 PM</span> Кодинг сессия</li>
+                <li><span>02:00 PM</span> Демонстрация</li>
+            </ul>
+        </div>
+
+        <div id="contacts" class="info-block">
+            <h3>КОНТАКТЫ</h3>
+            <ul class="contact-list">
+                <li>📧 email@probnomators.com</li>
+                <li>📞 +8 (800) 535-3535</li>
+                <li>🌐 /Хакатон КОД+</li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="bottom-grid container">
+
+        <div id="participants" class="participants-section">
+            <h3>СПИСОК УЧАСТНИКОВ</h3>
+            <div class="table-responsive">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ВУЗ</th>
+                            <th>Команда</th>
+                            <th>Статус</th>
+                            <th>Email</th>
+                        </tr>
+                    </thead>
+                    <tbody id="participants-container">
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    <div id="register" class="registration-card">
+    	<h1>РЕГИСТРАЦИЯ</h1>
+    	<form id="regForm">
+        	<input type="text" name="full_name" placeholder="ФИО" required>
+        	<input type="text" name="university" placeholder="ВУЗ" required>
+        	<input type="email" name="email" placeholder="EMAIL" required>
+        	<input type="text" name="team_name" placeholder="КОМАНДА">
+        	<button type="submit" class="btn-submit">ОТПРАВИТЬ</button>
+    	</form>
+    </div>
+
+    </section>
+
+    <footer class="container">
+        <p>&copy; 2026 Межвузовский хакатон. Все права защищены.</p>
+    </footer>
+
+    <div id="modalOverlay" class="modal-overlay hidden">
+        <div class="modal-content">
+            <div class="modal-icon">✅</div>
+            <h2>Готово!</h2>
+            <p id="modalMessage">Вы успешно зарегистрированы на хакатон «КОД+ 2026»</p>
+            <button id="closeModal" class="btn-primary">Отлично</button>
+        </div>
+    </div>
+</body>
+
+</html>
